@@ -10,7 +10,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Hello world action step
-        uses: PPG007/keywords-scanner@c841965650666e5deff17d29cf2d5cae4bc8684a
+        uses: PPG007/keywords-scanner@e6396a7ea8e351ae17021433a343984e8bd7af49
         with:
           keywords: '["qq", "File"]'
           ignoreCase: true
+          ignoreDir: './node_nodules'
