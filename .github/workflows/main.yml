@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Hello world action step
-        uses: PPG007/hello-world-javascript-action@v2.1
-        id: hello
+        uses: PPG007/keywords-scanner@c841965650666e5deff17d29cf2d5cae4bc8684a
         with:
-          keywords: '["test", "scrm"]'
+          keywords: '["qq", "File"]'
+          ignoreCase: true
