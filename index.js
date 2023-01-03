@@ -1,28 +1,21 @@
-const core = require('@actions/core');
-const fs = require('fs');
-const path = require('path');
-try {
-  const keywords = JSON.parse(core.getInput('keywords'));
-  keywords.forEach(keyword => {
-    console.log(keyword);
-  });
-  parse('.');
-  core.setOutput('result', 'success');
-} catch (error) {
-  core.setFailed(error.message);
-}
+import fs, { read } from 'fs';
+import readline from 'readline';
 
-function parse(dirName) {
-    const files = fs.readdirSync(dirName);
-    for (let i = 0; i < files.length; i++) {
-      const tempPath = path.join(dirName, files[i]);
-      if (files[i].startsWith('.')) {
-        continue;
-      }
-      if (fs.lstatSync(tempPath).isDirectory()) {
-        parse(tempPath);
-      } else {
-        console.log(tempPath)
-      }
-    }
-  }
+let reader = readline.createInterface({
+  input: fs.createReadStream('package.json'),
+});
+let result = false;
+reader.on('line', line => {
+  console.log(line);
+  result = true;
+});
+
+const answer = new Promise((resolve) => {
+  reader.on('close', () => {
+    resolve();
+  })
+});
+
+await answer.finally();
+
+console.log(result);

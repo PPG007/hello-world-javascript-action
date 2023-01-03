@@ -10,8 +10,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Hello world action step
-        uses: PPG007/keywords-scanner@e6396a7ea8e351ae17021433a343984e8bd7af49
+        uses: PPG007/keywords-scanner@v1.0
         with:
-          keywords: '["qq", "File"]'
-          ignoreCase: true
-          ignoreDir: './node_nodules'
+          keywords: ${{ secrets.KEYWORDS }}
+          ignoreCase: false
+          ignoredDirs: ${{ secrets.IGNORED_DIRS }}
