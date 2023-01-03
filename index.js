@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const fs = require('fs');
-
+const path = require('path');
 try {
   const keywords = JSON.parse(core.getInput('keywords'));
   keywords.forEach(keyword => {
